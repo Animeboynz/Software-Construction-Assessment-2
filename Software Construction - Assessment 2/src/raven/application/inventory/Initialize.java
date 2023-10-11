@@ -31,7 +31,7 @@ import java.util.Scanner;
 public class Initialize {
     private List<Location> locations; // List to store locations
     private Scanner scanner; // Scanner for user input
-    Pro productManagement = new Pro(); // Pro class instance for product management
+    public Pro productManagement = new Pro(); // Pro class instance for product management
     Log log = new Log(); // Log class instance for logging operations
 
     // Constructor to initialize locations and scanner

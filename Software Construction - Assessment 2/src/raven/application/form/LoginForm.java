@@ -25,7 +25,7 @@ public class LoginForm extends javax.swing.JPanel {
     public LoginForm() {
         initComponents();
         init();
-        javaconnect.connectdb();
+        //javaconnect.connectdb();
     }
 
     private void init() {
@@ -156,11 +156,11 @@ public class LoginForm extends javax.swing.JPanel {
             if(rs.next())
             {
                 Application.login();
-                JOptionPane.showMessageDialog(null, "Success");
+                //JOptionPane.showMessageDialog(null, "Success");
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Fail");
+                JOptionPane.showMessageDialog(null, "Unrecognised Username or Password");
             }
         }
         catch(SQLException ex){

@@ -15,6 +15,7 @@ import javax.swing.UIManager;
 import raven.application.form.LoginForm;
 import raven.application.form.MainForm;
 import raven.toast.Notifications;
+import raven.application.inventory.*;
 
 /**
  *
@@ -85,6 +86,12 @@ public class Application extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
+        
+        Initialize main_Menu = new Initialize();
+        main_Menu.regenerateMissingFiles();
+        main_Menu.productManagement.loadMasterProductsList();
+        main_Menu.loadProductsAndInventories();
+        
         FlatRobotoFont.install();
         FlatLaf.registerCustomDefaultsSource("raven.theme");
         UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 13));
@@ -95,7 +102,7 @@ public class Application extends javax.swing.JFrame {
             app.setVisible(true);
         });
         
-        System.out.println("what the fuck");
+        //System.out.println("Debug Comment");
  
     }
 
