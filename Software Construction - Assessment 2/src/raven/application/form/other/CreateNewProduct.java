@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import raven.application.Application;
 import raven.application.javaconnect;
+import raven.toast.Notifications;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.util.UIScale;
@@ -79,7 +80,7 @@ public class CreateNewProduct extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        RemoveProductBarcode = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         lb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,9 +123,14 @@ public class CreateNewProduct extends javax.swing.JPanel {
 
         jLabel2.setText("Remove Product");
 
-        jTextField1.setText("Barcode");
+        RemoveProductBarcode.setText("Barcode");
 
         jButton2.setText("Remove");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -146,7 +152,7 @@ public class CreateNewProduct extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(RemoveProductBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(NewProductBarcode)
                                         .addComponent(NewProductName)
@@ -178,7 +184,7 @@ public class CreateNewProduct extends javax.swing.JPanel {
                         .addGap(40, 40, 40)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RemoveProductBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(96, Short.MAX_VALUE))
@@ -203,6 +209,7 @@ public class CreateNewProduct extends javax.swing.JPanel {
             if (rowsAffected > 0) {
                 // Data inserted successfully
                 // You may want to display a success message or update the UI
+                Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "New Product added to the Database");
                 loadTable();
             } else {
                 // Handle the case where no rows were affected (insert failed)
@@ -229,17 +236,65 @@ public class CreateNewProduct extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_NewProductBarcodeActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Connection con = javaconnect.connectdb();
+        PreparedStatement ps = null;
+        String deleteQuery = "DELETE FROM PRODUCTS WHERE BARCODE = ?";
+
+        try {
+            String barcodeToDelete = RemoveProductBarcode.getText(); // Assuming you have a text field named BarcodeToDelete
+
+            if (barcodeToDelete.isEmpty()) {
+                // Handle the case where the user didn't provide a barcode
+                JOptionPane.showMessageDialog(null, "Please enter a barcode to delete.");
+                return;
+            }
+
+            ps = con.prepareStatement(deleteQuery);
+            ps.setString(1, barcodeToDelete);
+
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Data deleted successfully
+                // You may want to display a success message or update the UI
+                Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Product with barcode " + barcodeToDelete + " deleted from the Database");
+                loadTable();
+            } else {
+                // Handle the case where no rows were affected (delete failed)
+                JOptionPane.showMessageDialog(null, "No product with barcode " + barcodeToDelete + " found in the database.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        } finally {
+            // Close resources (ps, con, rs if used) in a finally block
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                // Handle any potential exceptions while closing resources
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NewProductBarcode;
     private javax.swing.JTextField NewProductName;
     private javax.swing.JTextField NewProductPrice;
+    private javax.swing.JTextField RemoveProductBarcode;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lb;
     // End of variables declaration//GEN-END:variables
 }
