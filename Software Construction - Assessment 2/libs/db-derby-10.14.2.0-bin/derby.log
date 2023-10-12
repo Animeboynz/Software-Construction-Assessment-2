@@ -12,3 +12,5 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Animeboynz\Documents\GitHub\Software-Construction-Assessment-2\Software Construction - Assessment 2\libs\db-derby-10.14.2.0-bin
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Thu Oct 12 14:28:14 NZDT 2023: Shutting down Derby engine
