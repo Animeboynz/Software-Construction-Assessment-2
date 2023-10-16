@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Animeboynz\Documents\GitHub\Software-Construction-Assessment-2\Software Construction - Assessment 2\libs\db-derby-10.14.2.0-bin
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Oct 17 10:01:53 NZDT 2023: Shutting down Derby engine
+----------------------------------------------------------------
+Tue Oct 17 10:01:53 NZDT 2023:
+Shutting down instance a816c00e-018b-37d1-bf6b-00006af73c16 on database directory C:\Users\Animeboynz\Documents\GitHub\Software-Construction-Assessment-2\Software Construction - Assessment 2\libs\db-derby-10.14.2.0-bin\InvDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+----------------------------------------------------------------
