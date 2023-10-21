@@ -1,8 +1,6 @@
 package com.g90.application.form.other;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;

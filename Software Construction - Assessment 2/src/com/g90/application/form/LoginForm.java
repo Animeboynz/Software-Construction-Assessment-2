@@ -7,7 +7,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.LayoutManager;
-import java.sql.Connection;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import com.g90.application.Application;

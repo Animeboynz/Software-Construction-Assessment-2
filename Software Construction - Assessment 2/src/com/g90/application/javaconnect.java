@@ -4,8 +4,6 @@
  */
 package com.g90.application;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.*;
 
 /**

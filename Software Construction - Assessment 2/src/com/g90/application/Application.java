@@ -1,6 +1,5 @@
 package com.g90.application;
 
-import com.g90.application.inventory.Initialize;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
 import com.formdev.flatlaf.fonts.roboto.FlatRobotoFont;
@@ -8,9 +7,6 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.*;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import com.g90.application.form.LoginForm;
@@ -86,11 +82,6 @@ public class Application extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
-        
-        Initialize main_Menu = new Initialize();
-        main_Menu.regenerateMissingFiles();
-        main_Menu.productManagement.loadMasterProductsList();
-        main_Menu.loadProductsAndInventories();
         
         FlatRobotoFont.install();
         FlatLaf.registerCustomDefaultsSource("raven.theme");
