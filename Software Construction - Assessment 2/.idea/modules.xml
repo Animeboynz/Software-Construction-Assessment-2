@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Software Construction - Assessment 2.iml" filepath="$PROJECT_DIR$/Software Construction - Assessment 2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/db-derby-10.14.2.0-bin/demo/demo.iml" filepath="$PROJECT_DIR$/libs/db-derby-10.14.2.0-bin/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/db-derby-10.14.2.0-bin/demo/programs/programs.iml" filepath="$PROJECT_DIR$/libs/db-derby-10.14.2.0-bin/demo/programs/programs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/db-derby-10.14.2.0-bin/demo/programs/scores/scores.iml" filepath="$PROJECT_DIR$/libs/db-derby-10.14.2.0-bin/demo/programs/scores/scores.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/db-derby-10.14.2.0-bin/demo/programs/vtis/vtis.iml" filepath="$PROJECT_DIR$/libs/db-derby-10.14.2.0-bin/demo/programs/vtis/vtis.iml" />
+    </modules>
+  </component>
+</project>

@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import com.g90.menu.mode.ToolBarAccentColor;
+//import com.g90.menu.mode.ToolBarAccentColor;
 
 /**
  *
@@ -55,7 +55,7 @@ public class Menu extends JPanel {
             }
         }
         //lightDarkMode.setMenuFull(menuFull);
-        toolBarAccentColor.setMenuFull(menuFull);
+//        toolBarAccentColor.setMenuFull(menuFull);
     }
 
     private final List<MenuEvent> events = new ArrayList<>();
@@ -105,12 +105,12 @@ public class Menu extends JPanel {
                 + "thumb:$Menu.ScrollBar.thumb");
         createMenu();
         //lightDarkMode = new LightDarkMode();
-        toolBarAccentColor = new ToolBarAccentColor(this);
-        toolBarAccentColor.setVisible(FlatUIUtils.getUIBoolean("AccentControl.show", false));
+//        toolBarAccentColor = new ToolBarAccentColor(this);
+//        toolBarAccentColor.setVisible(FlatUIUtils.getUIBoolean("AccentControl.show", false));
         add(header);
         add(scroll);
         //add(lightDarkMode);
-        add(toolBarAccentColor);
+//        add(toolBarAccentColor);
     }
 
     private void createMenu() {
@@ -201,7 +201,7 @@ public class Menu extends JPanel {
     private JScrollPane scroll;
     private JPanel panelMenu;
     //private LightDarkMode lightDarkMode;
-    private ToolBarAccentColor toolBarAccentColor;
+//    private ToolBarAccentColor toolBarAccentColor;
 
     private class MenuLayout implements LayoutManager {
 
@@ -241,9 +241,9 @@ public class Menu extends JPanel {
                 int iconHeight = header.getPreferredSize().height;
                 int hgap = menuFull ? sheaderFullHgap : 0;
                 int accentColorHeight = 0;
-                if (toolBarAccentColor.isVisible()) {
-                    accentColorHeight = toolBarAccentColor.getPreferredSize().height+gap;
-                }
+//                if (toolBarAccentColor.isVisible()) {
+//                    accentColorHeight = toolBarAccentColor.getPreferredSize().height+gap;
+//                }
 
                 header.setBounds(x + hgap, y, iconWidth - (hgap * 2), iconHeight);
                 int ldgap = UIScale.scale(10);
@@ -261,13 +261,13 @@ public class Menu extends JPanel {
 
                 //lightDarkMode.setBounds(ldx, ldy, ldWidth, ldHeight);
 
-                if (toolBarAccentColor.isVisible()) {
-                    int tbheight = toolBarAccentColor.getPreferredSize().height;
-                    int tbwidth = Math.min(toolBarAccentColor.getPreferredSize().width, ldWidth);
-                    int tby = y + height - tbheight - ldgap;
-                    int tbx = ldx + ((ldWidth - tbwidth) / 2);
-                    toolBarAccentColor.setBounds(tbx, tby, tbwidth, tbheight);
-                }
+//                if (toolBarAccentColor.isVisible()) {
+//                    int tbheight = toolBarAccentColor.getPreferredSize().height;
+//                    int tbwidth = Math.min(toolBarAccentColor.getPreferredSize().width, ldWidth);
+//                    int tby = y + height - tbheight - ldgap;
+//                    int tbx = ldx + ((ldWidth - tbwidth) / 2);
+//                    toolBarAccentColor.setBounds(tbx, tby, tbwidth, tbheight);
+//                }
             }
         }
     }
