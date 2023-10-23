@@ -75,11 +75,11 @@ public class MenuItem extends JPanel {
     }
 
     private Icon getIcon() {
-        Color lightColor = FlatUIUtils.getUIColor("Menu.icon.lightColor", Color.red);
+        //Color lightColor = FlatUIUtils.getUIColor("Menu.icon.lightColor", Color.red);
         Color darkColor = FlatUIUtils.getUIColor("Menu.icon.darkColor", Color.red);
         FlatSVGIcon icon = new FlatSVGIcon("raven/menu/icon/" + menuIndex + ".svg");
         FlatSVGIcon.ColorFilter f = new FlatSVGIcon.ColorFilter();
-        f.add(Color.decode("#969696"), lightColor, darkColor);
+        f.add(Color.decode("#969696"), darkColor, darkColor);
         icon.setColorFilter(f);
         return icon;
     }

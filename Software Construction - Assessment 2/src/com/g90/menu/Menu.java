@@ -1,6 +1,6 @@
 package com.g90.menu;
 
-import com.g90.menu.mode.LightDarkMode;
+//import com.g90.menu.mode.LightDarkMode;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.ui.FlatUIUtils;
 import com.formdev.flatlaf.util.UIScale;
@@ -54,7 +54,7 @@ public class Menu extends JPanel {
                 ((MenuItem) com).setFull(menuFull);
             }
         }
-        lightDarkMode.setMenuFull(menuFull);
+        //lightDarkMode.setMenuFull(menuFull);
         toolBarAccentColor.setMenuFull(menuFull);
     }
 
@@ -104,12 +104,12 @@ public class Menu extends JPanel {
                 + "background:$Menu.ScrollBar.background;"
                 + "thumb:$Menu.ScrollBar.thumb");
         createMenu();
-        lightDarkMode = new LightDarkMode();
+        //lightDarkMode = new LightDarkMode();
         toolBarAccentColor = new ToolBarAccentColor(this);
         toolBarAccentColor.setVisible(FlatUIUtils.getUIBoolean("AccentControl.show", false));
         add(header);
         add(scroll);
-        add(lightDarkMode);
+        //add(lightDarkMode);
         add(toolBarAccentColor);
     }
 
@@ -200,7 +200,7 @@ public class Menu extends JPanel {
     private JLabel header;
     private JScrollPane scroll;
     private JPanel panelMenu;
-    private LightDarkMode lightDarkMode;
+    //private LightDarkMode lightDarkMode;
     private ToolBarAccentColor toolBarAccentColor;
 
     private class MenuLayout implements LayoutManager {
@@ -248,7 +248,8 @@ public class Menu extends JPanel {
                 header.setBounds(x + hgap, y, iconWidth - (hgap * 2), iconHeight);
                 int ldgap = UIScale.scale(10);
                 int ldWidth = width - ldgap * 2;
-                int ldHeight = lightDarkMode.getPreferredSize().height;
+                //int ldHeight = lightDarkMode.getPreferredSize().height;
+                int ldHeight = 10;
                 int ldx = x + ldgap;
                 int ldy = y + height - ldHeight - ldgap  - accentColorHeight;
 
@@ -258,7 +259,7 @@ public class Menu extends JPanel {
                 int menuHeight = height - (iconHeight + gap) - (ldHeight + ldgap * 2) - (accentColorHeight);
                 scroll.setBounds(menux, menuy, menuWidth, menuHeight);
 
-                lightDarkMode.setBounds(ldx, ldy, ldWidth, ldHeight);
+                //lightDarkMode.setBounds(ldx, ldy, ldWidth, ldHeight);
 
                 if (toolBarAccentColor.isVisible()) {
                     int tbheight = toolBarAccentColor.getPreferredSize().height;

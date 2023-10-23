@@ -53,7 +53,7 @@ public class MainForm extends JLayeredPane {
         });
         initMenuEvent();
         setLayer(menuButton, JLayeredPane.POPUP_LAYER);
-        add(menuButton);
+        //add(menuButton);
         add(menu);
         add(panelBody);
     }
