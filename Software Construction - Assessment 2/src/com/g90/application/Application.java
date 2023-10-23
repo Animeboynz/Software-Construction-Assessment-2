@@ -13,9 +13,6 @@ import com.g90.application.form.LoginForm;
 import com.g90.application.form.MainForm;
 import raven.toast.Notifications;
 
-// New imports for close button
-import java.net.InetAddress;
-import org.apache.derby.drda.NetworkServerControl;
 
 
 /**
@@ -96,17 +93,7 @@ public class Application extends javax.swing.JFrame {
     
     public static void main(String args[]) {
         
-        try {
-            // Initialize and start Derby network server
-            NetworkServerControl server = new NetworkServerControl(InetAddress.getByName("localhost"), 1527);
-            server.start(null);
-
-            // Your GUI initialization code goes here
-            // For example: new YourGUI().setVisible(true);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+      
         
         
         FlatRobotoFont.install();
