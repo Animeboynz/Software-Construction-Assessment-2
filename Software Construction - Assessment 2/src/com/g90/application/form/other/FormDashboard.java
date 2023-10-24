@@ -1,6 +1,16 @@
 package com.g90.application.form.other;
+//package com.g90.application.form.other;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import com.formdev.flatlaf.FlatClientProperties;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
 import raven.toast.Notifications;
 
 /**
@@ -10,9 +20,62 @@ import raven.toast.Notifications;
 public class FormDashboard extends javax.swing.JPanel {
 
     public FormDashboard() {
-        initComponents();
-        lb.putClientProperty(FlatClientProperties.STYLE, ""
-                + "font:$h1.font");
+        setLayout(new BorderLayout());
+
+//        initComponents();
+        // Bar chart
+        DefaultCategoryDataset barDataset = new DefaultCategoryDataset();
+        barDataset.addValue(85, "Sales", "B2B");
+        barDataset.addValue(74, "Sales", "B2C");
+        barDataset.addValue(67, "Support", "B2C");
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Sales and Support Stats",
+                "Type",
+                "Percentage",
+                barDataset
+        );
+
+        ChartPanel barChartPanel = new ChartPanel(barChart);
+        barChartPanel.setBackground(Color.red);
+
+        // Pie chart
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        pieDataset.setValue("B2B Sales", 85);
+        pieDataset.setValue("B2C Sales", 74);
+        pieDataset.setValue("B2C Support", 67);
+        JFreeChart pieChart = ChartFactory.createPieChart("Sales Distribution", pieDataset);
+        ChartPanel pieChartPanel = new ChartPanel(pieChart);
+
+        // Creating a central panel for the charts
+        JPanel centerPanel = new JPanel(new GridLayout(2, 1)); // This will hold both charts
+        centerPanel.setBackground(Color.BLACK);
+        centerPanel.add(barChartPanel);
+        centerPanel.add(pieChartPanel);
+
+        // Adding the charts to the central part of the BorderLayout
+        add(centerPanel, BorderLayout.CENTER);
+
+        lb = new javax.swing.JLabel();
+        lb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb.setText("Dashboard");
+        lb.putClientProperty(FlatClientProperties.STYLE, "font:$h1.font");
+
+        jButton1 = new javax.swing.JButton();
+        jButton1.setText("Show Notifications Test");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        // Adding the label and button to the NORTH part of the BorderLayout
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.add(lb, BorderLayout.CENTER);
+        topPanel.add(jButton1, BorderLayout.EAST);
+
+        add(topPanel, BorderLayout.NORTH);
+        
+
     }
 
     @SuppressWarnings("unchecked")
