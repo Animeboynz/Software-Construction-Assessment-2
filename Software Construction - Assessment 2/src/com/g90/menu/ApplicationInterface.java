@@ -22,9 +22,9 @@ import javax.swing.JScrollPane;
  *
  * @author Raven
  */
-public class Menu extends JPanel {
+public class ApplicationInterface extends JPanel {
 
-    private final String menuItems[][] = {
+    private final String[][] main_Options_Available = {
         {"~MAIN~"},
         {"Dashboard"},
         {"List Inventory"},
@@ -36,30 +36,36 @@ public class Menu extends JPanel {
         {"Logout"}
     };
 
-    public boolean isMenuFull() {
-        return menuFull;
+    public boolean IsOptionsExtended() {
+        return OptionsExtended;
     }
 
-    public void setMenuFull(boolean menuFull) {
-        this.menuFull = menuFull;
+    public void OptionMenuExpanded(boolean menuFull) {
+        this.OptionsExtended = menuFull;
         if (menuFull) {
-            header.setText(headerName);
-            header.setHorizontalAlignment(getComponentOrientation().isLeftToRight() ? JLabel.LEFT : JLabel.RIGHT);
+            OptionHead.setText(headerName);
+            OptionHead.setHorizontalAlignment(getComponentOrientation().isLeftToRight() ? JLabel.LEFT : JLabel.RIGHT);
         } else {
-            header.setText("");
-            header.setHorizontalAlignment(JLabel.CENTER);
+            OptionHead.setText("");
+            OptionHead.setHorizontalAlignment(JLabel.CENTER);
         }
-        for (Component com : panelMenu.getComponents()) {
-            if (com instanceof MenuItem) {
-                ((MenuItem) com).setFull(menuFull);
+        
+        Component[] components = panelMenu.getComponents();
+        int i = 0;
+        
+        while (i < components.length) {
+            Component component = components[i];
+            if (component instanceof MenuItem) {
+                ((MenuItem) component).setExpanded(expanded);
             }
+            i++;
         }
         //lightDarkMode.setMenuFull(menuFull);
 //        toolBarAccentColor.setMenuFull(menuFull);
     }
 
     private final List<MenuEvent> events = new ArrayList<>();
-    private boolean menuFull = true;
+    private boolean OptionsExtended = true;
     private final String headerName = "Inventory Manager";
 
     protected final boolean hideMenuTitleOnMinimum = true;
@@ -69,58 +75,58 @@ public class Menu extends JPanel {
     protected final int menuMinWidth = 60;
     protected final int headerFullHgap = 5;
 
-    public Menu() {
-        init();
+    public ApplicationInterface() {
+        initialize();
     }
 
-    private void init() {
+    private void initialize() {
         setLayout(new MenuLayout());
         putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:20,2,2,2;"
                 + "background:$Menu.background;"
                 + "arc:10");
-        header = new JLabel(headerName);
-        header.setIcon(new ImageIcon(getClass().getResource("/com/g90/icon/png/logo.png")));
-        header.putClientProperty(FlatClientProperties.STYLE, ""
+        OptionHead = new JLabel(headerName);
+        OptionHead.setIcon(new ImageIcon(getClass().getResource("/com/g90/icon/png/logo.png")));
+        OptionHead.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$Menu.header.font;"
                 + "foreground:$Menu.foreground");
 
         //  Menu
-        scroll = new JScrollPane();
+        OptionsScroll = new JScrollPane();
         panelMenu = new JPanel(new MenuItemLayout(this));
         panelMenu.putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:5,5,5,5;"
                 + "background:$Menu.background");
 
-        scroll.setViewportView(panelMenu);
-        scroll.putClientProperty(FlatClientProperties.STYLE, ""
+        OptionsScroll.setViewportView(panelMenu);
+        OptionsScroll.putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:null");
-        JScrollBar vscroll = scroll.getVerticalScrollBar();
-        vscroll.setUnitIncrement(10);
-        vscroll.putClientProperty(FlatClientProperties.STYLE, ""
+        JScrollBar verticalScrollBar = OptionsScroll.getVerticalScrollBar();
+        verticalScrollBar.setUnitIncrement(10);
+        verticalScrollBar.putClientProperty(FlatClientProperties.STYLE, ""
                 + "width:$Menu.scroll.width;"
                 + "trackInsets:$Menu.scroll.trackInsets;"
                 + "thumbInsets:$Menu.scroll.thumbInsets;"
                 + "background:$Menu.ScrollBar.background;"
                 + "thumb:$Menu.ScrollBar.thumb");
-        createMenu();
+        buildMenuItems();
         //lightDarkMode = new LightDarkMode();
 //        toolBarAccentColor = new ToolBarAccentColor(this);
 //        toolBarAccentColor.setVisible(FlatUIUtils.getUIBoolean("AccentControl.show", false));
-        add(header);
-        add(scroll);
+        add(OptionHead);
+        add(OptionsScroll);
         //add(lightDarkMode);
 //        add(toolBarAccentColor);
     }
 
-    private void createMenu() {
+    private void buildMenuItems() {
         int index = 0;
-        for (int i = 0; i < menuItems.length; i++) {
-            String menuName = menuItems[i][0];
+        for (int i = 0; i < main_Options_Available.length; i++) {
+            String menuName = main_Options_Available[i][0];
             if (menuName.startsWith("~") && menuName.endsWith("~")) {
                 panelMenu.add(createTitle(menuName));
             } else {
-                MenuItem menuItem = new MenuItem(this, menuItems[i], index++, events);
+                MenuItem menuItem = new MenuItem(this, main_Options_Available[i], index++, events);
                 panelMenu.add(menuItem);
             }
         }
@@ -197,8 +203,8 @@ public class Menu extends JPanel {
         return menuMinWidth;
     }
 
-    private JLabel header;
-    private JScrollPane scroll;
+    private JLabel OptionHead;
+    private JScrollPane OptionsScroll;
     private JPanel panelMenu;
     //private LightDarkMode lightDarkMode;
 //    private ToolBarAccentColor toolBarAccentColor;
@@ -238,14 +244,14 @@ public class Menu extends JPanel {
                 int width = parent.getWidth() - (insets.left + insets.right);
                 int height = parent.getHeight() - (insets.top + insets.bottom);
                 int iconWidth = width;
-                int iconHeight = header.getPreferredSize().height;
-                int hgap = menuFull ? sheaderFullHgap : 0;
+                int iconHeight = OptionHead.getPreferredSize().height;
+                int hgap = OptionsExtended ? sheaderFullHgap : 0;
                 int accentColorHeight = 0;
 //                if (toolBarAccentColor.isVisible()) {
 //                    accentColorHeight = toolBarAccentColor.getPreferredSize().height+gap;
 //                }
 
-                header.setBounds(x + hgap, y, iconWidth - (hgap * 2), iconHeight);
+                OptionHead.setBounds(x + hgap, y, iconWidth - (hgap * 2), iconHeight);
                 int ldgap = UIScale.scale(10);
                 int ldWidth = width - ldgap * 2;
                 //int ldHeight = lightDarkMode.getPreferredSize().height;
@@ -257,7 +263,7 @@ public class Menu extends JPanel {
                 int menuy = y + iconHeight + gap;
                 int menuWidth = width;
                 int menuHeight = height - (iconHeight + gap) - (ldHeight + ldgap * 2) - (accentColorHeight);
-                scroll.setBounds(menux, menuy, menuWidth, menuHeight);
+                OptionsScroll.setBounds(menux, menuy, menuWidth, menuHeight);
 
                 //lightDarkMode.setBounds(ldx, ldy, ldWidth, ldHeight);
 

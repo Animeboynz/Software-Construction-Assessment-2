@@ -14,9 +14,9 @@ import javax.swing.JLabel;
  */
 public class MenuItemLayout implements LayoutManager {
 
-    private final Menu menu;
+    private final ApplicationInterface menu;
 
-    public MenuItemLayout(Menu menu) {
+    public MenuItemLayout(ApplicationInterface menu) {
         this.menu = menu;
     }
 
@@ -38,7 +38,7 @@ public class MenuItemLayout implements LayoutManager {
                 Component com = parent.getComponent(i);
                 if (com.isVisible()) {
                     if (com instanceof JLabel) {
-                        if (menu.isMenuFull() || menu.isHideMenuTitleOnMinimum() == false) {
+                        if (menu.IsOptionsExtended() || menu.isHideMenuTitleOnMinimum() == false) {
                             height += com.getPreferredSize().height + (UIScale.scale(menu.getMenuTitleVgap()) * 2);
                         }
                     } else {
@@ -70,7 +70,7 @@ public class MenuItemLayout implements LayoutManager {
                 if (com.isVisible()) {
                     int comHeight = com.getPreferredSize().height;
                     if (com instanceof JLabel) {
-                        if (menu.isMenuFull() || menu.isHideMenuTitleOnMinimum() == false) {
+                        if (menu.IsOptionsExtended() || menu.isHideMenuTitleOnMinimum() == false) {
                             int menuTitleInset = UIScale.scale(menu.getMenuTitleLeftInset());
                             int menuTitleVgap = UIScale.scale(menu.getMenuTitleVgap());
                             int titleWidth = width - menuTitleInset;

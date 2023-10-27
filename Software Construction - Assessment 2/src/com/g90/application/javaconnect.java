@@ -8,7 +8,7 @@ import java.sql.*;
 
 /**
  *
- * @author Animeboynz
+ * @author Maahir Hussain Shaik and Roshan Varughese
  */
 public class javaconnect {
     

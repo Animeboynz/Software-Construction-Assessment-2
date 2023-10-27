@@ -53,7 +53,7 @@ public class MenuItem extends JPanel {
     }
 
     private final List<MenuEvent> events;
-    private final Menu menu;
+    private final ApplicationInterface menu;
     private final String menus[];
     private final int menuIndex;
     private final int menuItemHeight = 38;
@@ -66,7 +66,7 @@ public class MenuItem extends JPanel {
 
     private PopupSubmenu popup;
 
-    public MenuItem(Menu menu, String menus[], int menuIndex, List<MenuEvent> events) {
+    public MenuItem(ApplicationInterface menu, String menus[], int menuIndex, List<MenuEvent> events) {
         this.menu = menu;
         this.menus = menus;
         this.menuIndex = menuIndex;
@@ -96,7 +96,7 @@ public class MenuItem extends JPanel {
                 menuItem.setIcon(getIcon());
                 menuItem.addActionListener((ActionEvent e) -> {
                     if (menus.length > 1) {
-                        if (menu.isMenuFull()) {
+                        if (menu.IsOptionsExtended()) {
                             MenuAnimation.animate(MenuItem.this, !menuShow);
                         } else {
                             popup.show(MenuItem.this, (int) MenuItem.this.getWidth() + UIScale.scale(5), UIScale.scale(menuItemHeight) / 2);
@@ -217,7 +217,7 @@ public class MenuItem extends JPanel {
             int smenuItemHeight = UIScale.scale(menuItemHeight);
             boolean ltr = getComponentOrientation().isLeftToRight();
             g2.setStroke(new BasicStroke(UIScale.scale(1f)));
-            if (menu.isMenuFull()) {
+            if (menu.IsOptionsExtended()) {
                 int arrowWidth = UIScale.scale(10);
                 int arrowHeight = UIScale.scale(5);
                 int ax = ltr ? (getWidth() - arrowWidth * 2) : arrowWidth;

@@ -24,7 +24,7 @@ import com.g90.application.Application;
 import com.g90.application.form.other.FormDashboard;
 import com.g90.application.form.other.AddItems;
 import com.g90.application.form.other.FormRead;
-import com.g90.menu.Menu;
+import com.g90.menu.ApplicationInterface;
 import com.g90.menu.MenuAction;
 
 /**
@@ -40,7 +40,7 @@ public class MainForm extends JLayeredPane {
     private void init() {
         setBorder(new EmptyBorder(5, 5, 5, 5));
         setLayout(new MainFormLayout());
-        menu = new Menu();
+        menu = new ApplicationInterface();
         panelBody = new JPanel(new BorderLayout());
         initMenuArrowIcon();
         menuButton.putClientProperty(FlatClientProperties.STYLE, ""
@@ -49,7 +49,7 @@ public class MainForm extends JLayeredPane {
                 + "focusWidth:0;"
                 + "borderWidth:0");
         menuButton.addActionListener((ActionEvent e) -> {
-            setMenuFull(!menu.isMenuFull());
+            setMenuFull(!menu.IsOptionsExtended());
         });
         initMenuEvent();
         setLayer(menuButton, JLayeredPane.POPUP_LAYER);
@@ -110,7 +110,7 @@ public class MainForm extends JLayeredPane {
             icon = (full) ? "menu_right.svg" : "menu_left.svg";
         }
         menuButton.setIcon(new FlatSVGIcon("raven/icon/svg/" + icon, 0.8f));
-        menu.setMenuFull(full);
+        menu.OptionMenuExpanded(full);
         revalidate();
     }
 
@@ -129,7 +129,7 @@ public class MainForm extends JLayeredPane {
         menu.setSelectedMenu(index, subIndex);
     }
 
-    private Menu menu;
+    private ApplicationInterface menu;
     private JPanel panelBody;
     private JButton menuButton;
 
@@ -166,16 +166,16 @@ public class MainForm extends JLayeredPane {
                 int y = insets.top;
                 int width = parent.getWidth() - (insets.left + insets.right);
                 int height = parent.getHeight() - (insets.top + insets.bottom);
-                int menuWidth = UIScale.scale(menu.isMenuFull() ? menu.getMenuMaxWidth() : menu.getMenuMinWidth());
+                int menuWidth = UIScale.scale(menu.IsOptionsExtended() ? menu.getMenuMaxWidth() : menu.getMenuMinWidth());
                 int menuX = ltr ? x : x + width - menuWidth;
                 menu.setBounds(menuX, y, menuWidth, height);
                 int menuButtonWidth = menuButton.getPreferredSize().width;
                 int menuButtonHeight = menuButton.getPreferredSize().height;
                 int menubX;
                 if (ltr) {
-                    menubX = (int) (x + menuWidth - (menuButtonWidth * (menu.isMenuFull() ? 0.5f : 0.3f)));
+                    menubX = (int) (x + menuWidth - (menuButtonWidth * (menu.IsOptionsExtended() ? 0.5f : 0.3f)));
                 } else {
-                    menubX = (int) (menuX - (menuButtonWidth * (menu.isMenuFull() ? 0.5f : 0.7f)));
+                    menubX = (int) (menuX - (menuButtonWidth * (menu.IsOptionsExtended() ? 0.5f : 0.7f)));
                 }
                 menuButton.setBounds(menubX, UIScale.scale(30), menuButtonWidth, menuButtonHeight);
                 int gap = UIScale.scale(5);
