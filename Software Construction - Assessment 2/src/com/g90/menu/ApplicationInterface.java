@@ -55,9 +55,7 @@ public class ApplicationInterface extends JPanel {
         
         while (i < components.length) {
             Component component = components[i];
-            if (component instanceof MenuItem) {
-                ((MenuItem) component).setExpanded(expanded);
-            }
+            
             i++;
         }
         //lightDarkMode.setMenuFull(menuFull);
