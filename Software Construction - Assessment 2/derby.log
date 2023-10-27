@@ -1,17 +1,13 @@
-Tue Oct 24 12:32:19 NZDT 2023 : Could not listen on port 1527 on host 127.0.0.1:
- java.net.BindException: Address already in use: NET_Bind
-An exception was thrown during network server startup. DRDA_ListenPort.S:Could not listen on port 1527 on host 127.0.0.1:
- java.net.BindException: Address already in use: NET_Bind
-java.lang.reflect.InvocationTargetException
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.apache.derby.iapi.jdbc.DRDAServerStarter.run(Unknown Source)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: java.lang.Exception: DRDA_ListenPort.S:Could not listen on port 1527 on host 127.0.0.1:
- java.net.BindException: Address already in use: NET_Bind
-	at org.apache.derby.impl.drda.NetworkServerControlImpl.consolePropertyMessageWork(Unknown Source)
-	at org.apache.derby.impl.drda.NetworkServerControlImpl.consolePropertyMessage(Unknown Source)
-	at org.apache.derby.impl.drda.NetworkServerControlImpl.blockingStart(Unknown Source)
-	... 6 more
+----------------------------------------------------------------
+Sat Oct 28 10:07:17 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-72f6-7a52-00000e9f55f0 
+on database directory C:\Users\Animeboynz\Documents\GitHub\Software-Construction-Assessment-2\Software Construction - Assessment 2\InvEmbeddedDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5c29bfd 
+Loaded from file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/libs/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.19+9-LTS-224
+user.dir=C:\Users\Animeboynz\Documents\GitHub\Software-Construction-Assessment-2\Software Construction - Assessment 2
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

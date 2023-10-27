@@ -13,7 +13,8 @@ import java.sql.*;
 public class javaconnect {
     
     public static Connection con;
-    public static String url="jdbc:derby://localhost:1527/InvDB;create=true";
+    public static String url="jdbc:derby:InvEmbeddedDB";
+    //public static String url="jdbc:derby://localhost:1527/InvDB;create=true";
     public static String username="db";
     public static String password="123";
     
@@ -22,6 +23,7 @@ public class javaconnect {
         try
         {
             DriverManager.registerDriver(new org.apache.derby.jdbc.ClientDriver());
+            //con=DriverManager.getConnection(url, username, password);
             con=DriverManager.getConnection(url, username, password);
             System.out.println(url +" connected...");
             return con;
