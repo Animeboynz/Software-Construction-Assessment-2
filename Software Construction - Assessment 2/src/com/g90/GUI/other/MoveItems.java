@@ -158,7 +158,7 @@ public class MoveItems extends javax.swing.JPanel {
         int quantityToMove = Integer.parseInt(QuantityToMove.getText());
 
         Connection con = javaconnect.connectdb();
-
+        //Start of partially generated ChatGPT code.
         try {
             // Check if the product exists in the source inventory
             String checkDataQuery = "SELECT BARCODE, QUANTITY FROM DATA WHERE BARCODE = ? AND INVENTORY = ?";
@@ -231,6 +231,7 @@ public class MoveItems extends javax.swing.JPanel {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        //End of partially generated ChatGPT code.
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BarcodeToMoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BarcodeToMoveActionPerformed
