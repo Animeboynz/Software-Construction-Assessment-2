@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
 
 /**
  * Represents the main application interface, extending a JPanel.
- * It seems to be a part of a larger application, potentially for managing inventory.
+ * Author : Maahir And Roshan
  */
 public class ApplicationInterface extends JPanel {
     // Constants and fields defining the structure and behavior of the menu
