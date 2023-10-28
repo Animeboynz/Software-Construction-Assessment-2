@@ -16,14 +16,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-//import com.g90.menu.mode.ToolBarAccentColor;
+
 
 /**
- *
- * @author Raven
+ * Represents the main application interface, extending a JPanel.
+ * It seems to be a part of a larger application, potentially for managing inventory.
  */
 public class ApplicationInterface extends JPanel {
-
+    // Constants and fields defining the structure and behavior of the menu
     private final String[][] optionsMenu = {
         {"~MAIN~"},
         {"Dashboard"},
@@ -71,11 +71,13 @@ public class ApplicationInterface extends JPanel {
     protected final int Side_menu_width_max_size = 250;
     protected final int side_menu_width_min_size = 60;
     protected final int horizontal_gap_header = 5;
-
+    
+     // Constructor initializes the UI components.
     public ApplicationInterface() {
         initialize();
     }
 
+    // Initializes the UI components and their properties.
     private void initialize() {
         setLayout(new MenuLayout());
         putClientProperty(FlatClientProperties.STYLE, ""
@@ -113,7 +115,9 @@ public class ApplicationInterface extends JPanel {
 
     }
 
+    // Builds the menu from the optionsMenu data structure.
     private void menuBuilding() {
+    // Iterates through the optionsMenu array and creates menu items or titles.
     int index = 0;
     int i = 0; // Initialization for the while loop
 
@@ -130,7 +134,7 @@ public class ApplicationInterface extends JPanel {
     }
 }
 
-
+    // Creates a title label for menu sections.
     private JLabel createTitle(String title) {
         String menuName = title.substring(1, title.length() - 1);
         JLabel lbTitle = new JLabel(menuName);
@@ -140,6 +144,8 @@ public class ApplicationInterface extends JPanel {
         return lbTitle;
     }
 
+    
+    // Methods related to selecting a menu item and running associated events
     public void setSelectedMenu(int index, int subIndex) {
         runEvent(index, subIndex);
     }
@@ -169,10 +175,12 @@ public class ApplicationInterface extends JPanel {
         }
     }
 
+    // Allows adding events to the menu, which are triggered on menu selection.
     public void addMenuEvent(EventApplication event) {
         events.add(event);
     }
 
+    // Methods for hiding menu items and retrieving menu configurations
     public void hideMenuItem() {
         for (Component com : panelMenu.getComponents()) {
             if (com instanceof MenuItem) {
@@ -202,13 +210,20 @@ public class ApplicationInterface extends JPanel {
         return side_menu_width_min_size;
     }
 
+    // Private fields for UI components
     private JLabel OptionHead;
     private JScrollPane OptionsScroll;
     private JPanel panelMenu;
+    /**
+     * Inner class defining a custom layout manager for the menu.
+     * This layout manager is responsible for arranging the components
+     * within the ApplicationInterface panel.
+     */
 
 
     private class MenuLayout implements LayoutManager {
 
+        // Method required by the LayoutManager interface but not implemented.
         @Override
         public void addLayoutComponent(String name, Component comp) {
         }
@@ -217,22 +232,32 @@ public class ApplicationInterface extends JPanel {
         public void removeLayoutComponent(Component comp) {
         }
 
+        // Returns the preferred size of the parent container.
         @Override
         public Dimension preferredLayoutSize(Container parent) {
+            // Implementation ensures synchronization and returns a fixed size.
             synchronized (parent.getTreeLock()) {
                 return new Dimension(5, 5);
             }
         }
 
+        
+        // Returns the minimum size of the parent container.
         @Override
         public Dimension minimumLayoutSize(Container parent) {
+            // Implementation ensures synchronization and returns a minimal size.
             synchronized (parent.getTreeLock()) {
                 return new Dimension(0, 0);
             }
         }
 
+        // Arranges the components within the parent container.
+        // The implementation is synchronized to handle threading issues.
+        // It calculates positions and sizes for various components like
+        // OptionHead, OptionsScroll, etc., based on certain conditions and properties.
         @Override
         public void layoutContainer(Container parent) {
+            
             synchronized (parent.getTreeLock()) {
                 Insets insets = parent.getInsets();
                 int x = insets.left;
