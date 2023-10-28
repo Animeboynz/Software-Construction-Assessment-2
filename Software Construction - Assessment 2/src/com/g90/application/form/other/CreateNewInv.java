@@ -24,6 +24,7 @@ public class CreateNewInv extends javax.swing.JPanel {
     {
         DefaultListModel<String> listModel = new DefaultListModel<>();
 
+        
         String query = "SELECT DISTINCT LOCATION FROM LOCATIONS"; // Use DISTINCT to get unique values
         Connection con = javaconnect.connectdb();
         jList1.removeAll();

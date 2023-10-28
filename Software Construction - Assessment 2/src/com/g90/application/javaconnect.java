@@ -1,40 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.g90.application;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-/**
- *
- * @author Maahir Hussain Shaik and Roshan Varughese
- */
 public class javaconnect {
-    
+
     public static Connection con;
-    public static String url="jdbc:derby:InvEmbeddedDB";
-    //public static String url="jdbc:derby://localhost:1527/InvDB;create=true";
-    public static String username="db";
-    public static String password="123";
-    
-    public static Connection connectdb()
-    {
-        try
-        {
-            DriverManager.registerDriver(new org.apache.derby.jdbc.ClientDriver());
-            //con=DriverManager.getConnection(url, username, password);
-            con=DriverManager.getConnection(url, username, password);
-            System.out.println(url +" connected...");
+    public static String url2 = "jdbc:derby:InvEmbeddedDB;create=true";
+    public static String username = "db";
+    public static String password = "123";
+
+    public static Connection connectdb() {
+        try {
+            con = DriverManager.getConnection(url2, username, password);
+            System.out.println(url2 + " connected...");
             return con;
-        }
-        catch (SQLException ex) 
-        {
+        } catch (SQLException ex) {
             System.err.println("SQLException: " + ex.getMessage());
         }
         return null;
     }
-
-
-    
 }
