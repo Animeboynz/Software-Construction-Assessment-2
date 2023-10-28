@@ -4,12 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/application/form/other/RemoveItems.java</file>
-            <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/theme/FlatDarkLaf.properties</file>
-            <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/application/form/other/MoveItems.java</file>
-            <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/menu/ApplicationInterface.java</file>
-            <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/application/Application.java</file>
             <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/application/javaconnect.java</file>
-            <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/menu/ApplicationActions.java</file>
+            <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/application/Application.java</file>
+            <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/application/form/other/AddItems.java</file>
+            <file>file:/C:/Users/Animeboynz/Documents/GitHub/Software-Construction-Assessment-2/Software%20Construction%20-%20Assessment%202/src/com/g90/menu/ApplicationInterface.java</file>
         </group>
     </open-files>
 </project-private>
