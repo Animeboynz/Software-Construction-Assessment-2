@@ -25,7 +25,7 @@ import com.g90.application.form.other.FormDashboard;
 import com.g90.application.form.other.AddItems;
 import com.g90.application.form.other.FormRead;
 import com.g90.menu.ApplicationInterface;
-import com.g90.menu.MenuAction;
+import com.g90.menu.ApplicationActions;
 
 /**
  *
@@ -73,7 +73,7 @@ public class MainForm extends JLayeredPane {
     }
 
     private void initMenuEvent() {
-        menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+        menu.addMenuEvent((int index, int subIndex, ApplicationActions action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
             if (index == 0) {
                 Application.showForm(new FormDashboard());

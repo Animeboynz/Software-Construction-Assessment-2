@@ -52,7 +52,7 @@ public class MenuItem extends JPanel {
         return menuIndex;
     }
 
-    private final List<MenuEvent> events;
+    private final List<EventApplication> events;
     private final ApplicationInterface menu;
     private final String menus[];
     private final int menuIndex;
@@ -66,7 +66,7 @@ public class MenuItem extends JPanel {
 
     private PopupSubmenu popup;
 
-    public MenuItem(ApplicationInterface menu, String menus[], int menuIndex, List<MenuEvent> events) {
+    public MenuItem(ApplicationInterface menu, String menus[], int menuIndex, List<EventApplication> events) {
         this.menu = menu;
         this.menus = menus;
         this.menuIndex = menuIndex;
@@ -97,7 +97,7 @@ public class MenuItem extends JPanel {
                 menuItem.addActionListener((ActionEvent e) -> {
                     if (menus.length > 1) {
                         if (menu.IsOptionsExtended()) {
-                            MenuAnimation.animate(MenuItem.this, !menuShow);
+                            ApplicationAnimation.animate(MenuItem.this, !menuShow);
                         } else {
                             popup.show(MenuItem.this, (int) MenuItem.this.getWidth() + UIScale.scale(5), UIScale.scale(menuItemHeight) / 2);
                         }

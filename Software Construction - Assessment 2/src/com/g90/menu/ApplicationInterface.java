@@ -24,7 +24,7 @@ import javax.swing.JScrollPane;
  */
 public class ApplicationInterface extends JPanel {
 
-    private final String[][] main_Options_Available = {
+    private final String[][] optionsMenu = {
         {"~MAIN~"},
         {"Dashboard"},
         {"List Inventory"},
@@ -58,20 +58,19 @@ public class ApplicationInterface extends JPanel {
             
             i++;
         }
-        //lightDarkMode.setMenuFull(menuFull);
-//        toolBarAccentColor.setMenuFull(menuFull);
+
     }
 
-    private final List<MenuEvent> events = new ArrayList<>();
+    private final List<EventApplication> events = new ArrayList<>();
     private boolean OptionsExtended = true;
     private final String headerName = "Inventory Manager";
 
     protected final boolean hideMenuTitleOnMinimum = true;
-    protected final int menuTitleLeftInset = 5;
-    protected final int menuTitleVgap = 5;
-    protected final int menuMaxWidth = 250;
-    protected final int menuMinWidth = 60;
-    protected final int headerFullHgap = 5;
+    protected final int inset_left_side = 5;
+    protected final int vertical_gap_title = 5;
+    protected final int Side_menu_width_max_size = 250;
+    protected final int side_menu_width_min_size = 60;
+    protected final int horizontal_gap_header = 5;
 
     public ApplicationInterface() {
         initialize();
@@ -91,7 +90,7 @@ public class ApplicationInterface extends JPanel {
 
         //  Menu
         OptionsScroll = new JScrollPane();
-        panelMenu = new JPanel(new MenuItemLayout(this));
+        panelMenu = new JPanel(new CustomApplicationOptionsLayout(this));
         panelMenu.putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:5,5,5,5;"
                 + "background:$Menu.background");
@@ -107,28 +106,30 @@ public class ApplicationInterface extends JPanel {
                 + "thumbInsets:$Menu.scroll.thumbInsets;"
                 + "background:$Menu.ScrollBar.background;"
                 + "thumb:$Menu.ScrollBar.thumb");
-        buildMenuItems();
-        //lightDarkMode = new LightDarkMode();
-//        toolBarAccentColor = new ToolBarAccentColor(this);
-//        toolBarAccentColor.setVisible(FlatUIUtils.getUIBoolean("AccentControl.show", false));
+        menuBuilding();
+
         add(OptionHead);
         add(OptionsScroll);
-        //add(lightDarkMode);
-//        add(toolBarAccentColor);
+
     }
 
-    private void buildMenuItems() {
-        int index = 0;
-        for (int i = 0; i < main_Options_Available.length; i++) {
-            String menuName = main_Options_Available[i][0];
-            if (menuName.startsWith("~") && menuName.endsWith("~")) {
-                panelMenu.add(createTitle(menuName));
-            } else {
-                MenuItem menuItem = new MenuItem(this, main_Options_Available[i], index++, events);
-                panelMenu.add(menuItem);
-            }
+    private void menuBuilding() {
+    int index = 0;
+    int i = 0; // Initialization for the while loop
+
+    while (i < optionsMenu.length) {
+        String option_name = optionsMenu[i][0];
+        if (option_name.startsWith("~") && option_name.endsWith("~")) {
+            panelMenu.add(createTitle(option_name));
+        } else {
+            MenuItem Option_item = new MenuItem(this, optionsMenu[i], index++, events);
+            panelMenu.add(Option_item);
         }
+
+        i++; // Increment the counter
     }
+}
+
 
     private JLabel createTitle(String title) {
         String menuName = title.substring(1, title.length() - 1);
@@ -159,16 +160,16 @@ public class ApplicationInterface extends JPanel {
     }
 
     protected void runEvent(int index, int subIndex) {
-        MenuAction menuAction = new MenuAction();
-        for (MenuEvent event : events) {
-            event.menuSelected(index, subIndex, menuAction);
+        ApplicationActions menuAction = new ApplicationActions();
+        for (EventApplication event : events) {
+            event.SelectedOption(index, subIndex, menuAction);
         }
-        if (!menuAction.isCancel()) {
+        if (!menuAction.isCancelled()) {
             setSelected(index, subIndex);
         }
     }
 
-    public void addMenuEvent(MenuEvent event) {
+    public void addMenuEvent(EventApplication event) {
         events.add(event);
     }
 
@@ -186,26 +187,25 @@ public class ApplicationInterface extends JPanel {
     }
 
     public int getMenuTitleLeftInset() {
-        return menuTitleLeftInset;
+        return inset_left_side;
     }
 
     public int getMenuTitleVgap() {
-        return menuTitleVgap;
+        return vertical_gap_title;
     }
 
     public int getMenuMaxWidth() {
-        return menuMaxWidth;
+        return Side_menu_width_max_size;
     }
 
     public int getMenuMinWidth() {
-        return menuMinWidth;
+        return side_menu_width_min_size;
     }
 
     private JLabel OptionHead;
     private JScrollPane OptionsScroll;
     private JPanel panelMenu;
-    //private LightDarkMode lightDarkMode;
-//    private ToolBarAccentColor toolBarAccentColor;
+
 
     private class MenuLayout implements LayoutManager {
 
@@ -238,16 +238,14 @@ public class ApplicationInterface extends JPanel {
                 int x = insets.left;
                 int y = insets.top;
                 int gap = UIScale.scale(5);
-                int sheaderFullHgap = UIScale.scale(headerFullHgap);
+                int sheaderFullHgap = UIScale.scale(horizontal_gap_header);
                 int width = parent.getWidth() - (insets.left + insets.right);
                 int height = parent.getHeight() - (insets.top + insets.bottom);
                 int iconWidth = width;
                 int iconHeight = OptionHead.getPreferredSize().height;
                 int hgap = OptionsExtended ? sheaderFullHgap : 0;
                 int accentColorHeight = 0;
-//                if (toolBarAccentColor.isVisible()) {
-//                    accentColorHeight = toolBarAccentColor.getPreferredSize().height+gap;
-//                }
+
 
                 OptionHead.setBounds(x + hgap, y, iconWidth - (hgap * 2), iconHeight);
                 int ldgap = UIScale.scale(10);
@@ -263,15 +261,7 @@ public class ApplicationInterface extends JPanel {
                 int menuHeight = height - (iconHeight + gap) - (ldHeight + ldgap * 2) - (accentColorHeight);
                 OptionsScroll.setBounds(menux, menuy, menuWidth, menuHeight);
 
-                //lightDarkMode.setBounds(ldx, ldy, ldWidth, ldHeight);
 
-//                if (toolBarAccentColor.isVisible()) {
-//                    int tbheight = toolBarAccentColor.getPreferredSize().height;
-//                    int tbwidth = Math.min(toolBarAccentColor.getPreferredSize().width, ldWidth);
-//                    int tby = y + height - tbheight - ldgap;
-//                    int tbx = ldx + ((ldWidth - tbwidth) / 2);
-//                    toolBarAccentColor.setBounds(tbx, tby, tbwidth, tbheight);
-//                }
             }
         }
     }
