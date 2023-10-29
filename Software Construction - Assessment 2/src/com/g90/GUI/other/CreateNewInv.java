@@ -7,10 +7,6 @@ import javax.swing.JOptionPane;
 import com.g90.GUI.javaconnect;
 import raven.toast.Notifications;
 
-/**
- *
- * @author Raven
- */
 public class CreateNewInv extends javax.swing.JPanel {
 
     public CreateNewInv() {

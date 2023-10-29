@@ -10,10 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Raven
- */
 public class MoveItems extends javax.swing.JPanel {
 
     public MoveItems() {

@@ -16,10 +16,6 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.LayoutManager;
 
-/**
- *
- * @author Raven
- */
 public class CreateNewProduct extends javax.swing.JPanel {
     
     public CreateNewProduct() {

@@ -171,7 +171,7 @@ public class Application extends javax.swing.JFrame {
         FlatRobotoFont.install();
 
         // Registering custom defaults for the FlatLaf look and feel
-        FlatLaf.registerCustomDefaultsSource("raven.theme");
+        FlatLaf.registerCustomDefaultsSource("custom.theme");
 
         // Setting the default font for the UI
         UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 13));

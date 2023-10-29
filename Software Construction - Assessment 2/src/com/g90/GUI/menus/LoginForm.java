@@ -12,10 +12,6 @@ import javax.swing.JOptionPane;
 import com.g90.GUI.Application;
 import com.g90.GUI.javaconnect;
 
-/**
- *
- * @author Raven
- */
 public class LoginForm extends javax.swing.JPanel {
 
     Connection con=javaconnect.connectdb();

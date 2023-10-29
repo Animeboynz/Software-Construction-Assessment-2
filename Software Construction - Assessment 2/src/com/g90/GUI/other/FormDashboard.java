@@ -13,10 +13,7 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import raven.toast.Notifications;
 
-/**
- *
- * @author Raven
- */
+
 public class FormDashboard extends javax.swing.JPanel {
 
     public FormDashboard() {

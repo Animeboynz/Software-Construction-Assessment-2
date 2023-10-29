@@ -26,10 +26,6 @@ import com.g90.gui.other.AddItems;
 import com.g90.gui.app.ApplicationInterface;
 import com.g90.gui.app.ApplicationActions;
 
-/**
- *
- * @author Raven
- */
 public class MainForm extends JLayeredPane {
 
     public MainForm() {
@@ -41,17 +37,9 @@ public class MainForm extends JLayeredPane {
         setLayout(new MainFormLayout());
         menu = new ApplicationInterface();
         panelBody = new JPanel(new BorderLayout());
-        initMenuArrowIcon();
-        menuButton.putClientProperty(FlatClientProperties.STYLE, ""
-                + "background:$Menu.button.background;"
-                + "arc:999;"
-                + "focusWidth:0;"
-                + "borderWidth:0");
-        menuButton.addActionListener((ActionEvent e) -> {
-            setMenuFull(!menu.IsOptionsExtended());
-        });
+        
         initMenuEvent();
-        setLayer(menuButton, JLayeredPane.POPUP_LAYER);
+        
         //add(menuButton);
         add(menu);
         add(panelBody);
@@ -60,16 +48,8 @@ public class MainForm extends JLayeredPane {
     @Override
     public void applyComponentOrientation(ComponentOrientation o) {
         super.applyComponentOrientation(o);
-        initMenuArrowIcon();
     }
 
-    private void initMenuArrowIcon() {
-        if (menuButton == null) {
-            menuButton = new JButton();
-        }
-        String icon = (getComponentOrientation().isLeftToRight()) ? "menu_left.svg" : "menu_right.svg";
-        menuButton.setIcon(new FlatSVGIcon("raven/icon/svg/" + icon, 0.8f));
-    }
 
     private void initMenuEvent() {
         menu.addMenuEvent((int index, int subIndex, ApplicationActions action) -> {
@@ -101,17 +81,6 @@ public class MainForm extends JLayeredPane {
         });
     }
 
-    private void setMenuFull(boolean full) {
-        String icon;
-        if (getComponentOrientation().isLeftToRight()) {
-            icon = (full) ? "menu_left.svg" : "menu_right.svg";
-        } else {
-            icon = (full) ? "menu_right.svg" : "menu_left.svg";
-        }
-        menuButton.setIcon(new FlatSVGIcon("raven/icon/svg/" + icon, 0.8f));
-        menu.OptionMenuExpanded(full);
-        revalidate();
-    }
 
     public void hideMenu() {
         menu.hideMenuItem();
@@ -168,15 +137,6 @@ public class MainForm extends JLayeredPane {
                 int menuWidth = UIScale.scale(menu.IsOptionsExtended() ? menu.getMenuMaxWidth() : menu.getMenuMinWidth());
                 int menuX = ltr ? x : x + width - menuWidth;
                 menu.setBounds(menuX, y, menuWidth, height);
-                int menuButtonWidth = menuButton.getPreferredSize().width;
-                int menuButtonHeight = menuButton.getPreferredSize().height;
-                int menubX;
-                if (ltr) {
-                    menubX = (int) (x + menuWidth - (menuButtonWidth * (menu.IsOptionsExtended() ? 0.5f : 0.3f)));
-                } else {
-                    menubX = (int) (menuX - (menuButtonWidth * (menu.IsOptionsExtended() ? 0.5f : 0.7f)));
-                }
-                menuButton.setBounds(menubX, UIScale.scale(30), menuButtonWidth, menuButtonHeight);
                 int gap = UIScale.scale(5);
                 int bodyWidth = width - menuWidth - gap;
                 int bodyHeight = height;

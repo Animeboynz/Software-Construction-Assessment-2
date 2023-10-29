@@ -8,10 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Raven
- */
 public class AddItems extends javax.swing.JPanel {
 
     public AddItems() {

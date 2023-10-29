@@ -7,10 +7,6 @@ import javax.swing.table.DefaultTableModel;
 import com.g90.GUI.Application;
 import com.g90.GUI.javaconnect;
 
-/**
- *
- * @author Raven
- */
 public class ListInventory extends javax.swing.JPanel {
     
     public ListInventory() {
