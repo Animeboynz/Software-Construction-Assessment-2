@@ -10,15 +10,12 @@ This is Part 2 of a Software Construction University Project created by Roshan V
 
 
 ## Usage
-
-1. CTRL+5 -> Services -> Databases -> Right-click Java DB -> Properties
+1. Clean & Build
+2. Run
 
 ```yaml
-Java DB Installation: %project_root%\libs\db-derby-10.14.2.0-bin
-Database Location: %project_root%\libs\db-derby-10.14.2.0-bin
+Database Location: %project_root%
 ```
-2. CTRL+5 -> Services -> Databases -> Right-click Java DB -> Start Server
-
 ## Contributing
 
 This is a University Group Assessment and contributions are limited to its group members. Any other pull requests will be ignored.
